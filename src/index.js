@@ -1,14 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import "typeface-roboto";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import JobContext from "./context/JobProvider";
+import JobProvider from "./context/JobProvider";
+import FilterProvider from "./context/FilterProvider";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const fonts = {
+  body: "Roboto, sans-serif, Courier New",
+  heading: "Roboto, sans-serif, Courier New",
+};
+const theme = extendTheme({ fonts });
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <ChakraProvider theme={theme}>
+    <JobProvider>
+      <FilterProvider>
+        <App />
+      </FilterProvider>
+    </JobProvider>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
