@@ -9,8 +9,6 @@ import {
   Skeleton
 } from "@chakra-ui/react";
 
-import "./../JobCard/JobCard.css";
-
 const JobCardSkeleton = () => {
   return (
     <Card
@@ -36,10 +34,10 @@ const JobCardSkeleton = () => {
       </CardHeader>
       <CardFooter pt="3" justify="space-between">
         <Flex align="center">
-          <Skeleton height="20px" width="60" />
+          <Skeleton height="20px" width={{base:"60px", md:"40px"}} />
         </Flex>
         <Flex align="center">
-          <Skeleton height="20px" width="40" />
+          <Skeleton height="20px" width={{base:"40px", md:"40px"}} />
         </Flex>
       </CardFooter>
     </Card>

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
-import NavigationBar from "../components/NavigationBar/NavigationBar";
+import NavigationBar from "../components/NavigationBar";
 
 export default function RootLayout() {
   return (

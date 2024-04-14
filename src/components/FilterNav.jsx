@@ -8,20 +8,19 @@ import {
   Button,
   Stack,
   Spacer,
+  Badge,
   Box,
 } from "@chakra-ui/react";
 import { useContext, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
-import { FilterContext } from "../../context/FilterProvider";
+import { FilterContext } from "../context/FilterProvider";
 
 const FilterNav = () => {
   const {
     level,
     category,
-    location,
     handleLevel,
     handleCategory,
-    handleLocation,
   } = useContext(FilterContext);
 
   const experienceLevel = [
@@ -48,7 +47,6 @@ const FilterNav = () => {
   const clearFilter = () => {
     handleCategory([]);
     handleLevel([]);
-    // handle([]);
   }
 
   return (
@@ -64,13 +62,14 @@ const FilterNav = () => {
             colorscheme="blue"
           >
             <Flex align="center">
-              <Box>Experience Level</Box> <Spacer /> <BiChevronDown />
+              <Box>{level.length > 0 && <Badge colorScheme="blue" mr="2">{level.length}</Badge>} Experience Level</Box> <Spacer /> <BiChevronDown />
             </Flex>
           </MenuButton>
           <MenuList>
-            <MenuOptionGroup type="checkbox">
+            <MenuOptionGroup type="checkbox" value={level}>
               {experienceLevel.map((level) => (
                 <MenuItemOption
+                  isChecked={true}
                   onClick={() => handleExpLevel(level)}
                   key={level}
                   value={level}
@@ -91,13 +90,14 @@ const FilterNav = () => {
             colorscheme="blue"
           >
             <Flex align="center">
-              <Box>Category</Box> <Spacer /> <BiChevronDown />
+              <Box>{category.length > 0 && <Badge colorScheme="blue" mr="2">{category.length}</Badge>}Category</Box> <Spacer /> <BiChevronDown />
             </Flex>
           </MenuButton>
           <MenuList minWidth="240px">
-            <MenuOptionGroup type="checkbox">
+          <MenuOptionGroup type="checkbox" value={category}>
               {categoryList.map((category) => (
                 <MenuItemOption
+                  isChecked={true}
                   onClick={() => handleJobCategory(category)}
                   key={category}
                   value={category}
@@ -108,29 +108,8 @@ const FilterNav = () => {
             </MenuOptionGroup>
           </MenuList>
         </Menu>
-        <Menu closeOnSelect={false}>
-          <MenuButton
-            px={4}
-            py={2}
-            transition="all 0.2s"
-            borderRadius="md"
-            borderWidth="1px"
-            colorscheme="blue"
-          >
-            <Flex align="center">
-              <Box>Company</Box> <Spacer /> <BiChevronDown />
-            </Flex>
-          </MenuButton>
-          <MenuList height="600px" minWidth="240px" overflow="auto">
-            <MenuOptionGroup h="100" type="checkbox">
-              {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20].map((category) => (
-                <MenuItemOption key={category} value={category}>{category}</MenuItemOption>
-              ))} */}
-            </MenuOptionGroup>
-          </MenuList>
-        </Menu>
-        <Box boxSizing="content">
-          <Button onClick={() => clearFilter()}>Clear filter</Button>
+        <Box boxSizing="content" alignSelf="center">
+          <Button colorScheme="blue" onClick={() => clearFilter()}>Clear filter</Button>
         </Box>
       </Stack>
     </>

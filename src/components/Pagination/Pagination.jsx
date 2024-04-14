@@ -1,6 +1,5 @@
 import React from "react";
 import {Button, ButtonGroup} from '@chakra-ui/react';
-// import PropTypes from "prop-types";
 import _ from "lodash";
 
 const Pagination = ({ pagesCount, currentPage, onPageChange }) => {

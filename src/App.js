@@ -6,12 +6,11 @@ import {
 } from 'react-router-dom'
 
 // layouts and pages
-import './App.css';
+import './index.css';
 import RootLayout from './layouts/RootLayout'
 
 import Home from './pages/Home';
 import Detail from './pages/Detail';
-import List from './pages/List';
 
 // router and routes
 const router = createBrowserRouter(
@@ -19,7 +18,6 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="jobs" element={<Detail />} />
-      {/* <Route path="" element={<Detail />} />  */}
     </Route>
   )
 )

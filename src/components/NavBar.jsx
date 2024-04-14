@@ -1,7 +1,6 @@
 import {
   Box,
   Flex,
-  Spacer,
   Container,
   Grid,
   GridItem,
@@ -9,9 +8,6 @@ import {
   Text,
   Select,
   Button,
-  HStack,
-  Link as ChakraLink,
-  LinkProps,
 } from "@chakra-ui/react";
 
 const NavBar = () => {
@@ -58,7 +54,7 @@ const NavBar = () => {
             colSpan={{ base: 2, md: 1 }}
           >
             <Box>
-              <Image src="/images/hero-img.png" alt="job-hunt bro" />
+              <Image src="assets/images/hero-img.png" alt="job-hunt bro" />
             </Box>
           </GridItem>
         </Grid>

@@ -5,7 +5,9 @@ export const FilterContext = React.createContext();
 const FilterProvider = (props) => {
   const [level, setLevel] = useState([]);
   const [category, setCategory] = useState([]);
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState(null);
+  const [company, setCompany] = useState(null);
+  const [ descending, setDescending ] = useState(false);
 
   const handleLevel = (level) => {
     setLevel(level);
@@ -19,8 +21,29 @@ const FilterProvider = (props) => {
     setLocation(location);
   };
 
+  const handleCompany = (company) => {
+    setCompany(company);
+  };
+
+  const handleDescending = (descending) => {
+    setDescending(descending);
+  };
+
   return (
-    <FilterContext.Provider value={{ level, category, location, handleLevel, handleCategory, handleLocation }}>
+    <FilterContext.Provider
+      value={{
+        level,
+        category,
+        location,
+        company,
+        descending,
+        handleLevel,
+        handleCategory,
+        handleLocation,
+        handleCompany,
+        handleDescending
+      }}
+    >
       {props.children}
     </FilterContext.Provider>
   );

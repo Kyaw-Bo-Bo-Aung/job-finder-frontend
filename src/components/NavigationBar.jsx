@@ -18,7 +18,6 @@ const NavigationBar = () => {
           <ChakraLink
             _hover={{
               textDecoration: "none",
-              textDecoration: "none",
               color: "black",
             }}
             p="4"

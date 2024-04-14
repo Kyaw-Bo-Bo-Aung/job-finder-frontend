@@ -4,13 +4,23 @@ import {
   GridItem,
   Box,
   Divider,
+  Flex,
+  Icon,
 } from "@chakra-ui/react";
-import FilterNav from "../components/FilterNav/FilterNav";
-import SearchBar from "../components/SearchBar/SearchBar";
-import JobVerticalList from "../components/JobVerticalList/JobVerticalList";
-import JobDetailCard from "../components/JobDetailCard/JobDetailCard";
+import FilterNav from "../components/FilterNav";
+import SearchBar from "../components/SearchBar";
+import JobVerticalList from "../components/JobVerticalList";
+import JobDetailCard from "../components/JobDetailCard";
+import { useState } from "react";
+import { BiArrowBack } from "react-icons/bi";
 
 const Detail = () => {
+  const [isDetailView, setIsDetailView] = useState(false);
+
+  const toggleDetailView = () => {
+    setIsDetailView(!isDetailView);
+  };
+
   return (
     <>
       <>
@@ -22,11 +32,42 @@ const Detail = () => {
           <Box m="5">
             <FilterNav />
           </Box>
-          <Grid templateColumns="repeat(7, 1fr)" gap={4} h={{md: `calc(100vh - 150px)`}}>
-            <GridItem colSpan={{base: 7, md: 3, lg: 3}} h={{ md: `calc(100%)` }} overflowY="auto">
-              <JobVerticalList />
+          <Grid
+            templateColumns="repeat(7, 1fr)"
+            h={{ md: `calc(100vh - 150px)` }}
+          >
+            <GridItem
+              display={
+                isDetailView ? { base: "none", md: "block" } : { base: "block" }
+              }
+              colSpan={{ base: 7, md: 3 }}
+              h={{ md: `calc(100%)` }}
+              overflowY="auto"
+              overflowX={{ base: "hidden" }}
+            >
+              <JobVerticalList onChangeDetailView={() => toggleDetailView()} />
             </GridItem>
-            <GridItem colSpan={{base: 7, md: 4, lg: 4}} h={{ md: `calc(100%)` }} overflowY="auto">
+            <GridItem
+              display={
+                isDetailView ? { base: "block" } : { base: "none", md: "block" }
+              }
+              colSpan={{ base: 7, md: 4 }}
+              h={{ md: `calc(100%)` }}
+              overflowY="auto"
+            >
+              <Flex
+                display={
+                  isDetailView ? { base: "flex", md: "none" } : { base: "none" }
+                }
+                onClick={() => toggleDetailView()}
+                my="3"
+                as="button"
+                justify="left"
+                align="center"
+              >
+                <Icon as={BiArrowBack} color="blue.800" boxSize={5} mr={1} />
+                <Box as="span">Back to list</Box>
+              </Flex>
               <JobDetailCard />
             </GridItem>
           </Grid>
