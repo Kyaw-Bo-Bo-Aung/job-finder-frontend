@@ -12,6 +12,12 @@ import FilterProvider from "./context/FilterProvider";
 const fonts = {
   body: "Roboto, sans-serif, Courier New",
   heading: "Roboto, sans-serif, Courier New",
+  colors: {
+    brand: {
+      100: "#92E3A9",
+      200: "#4d7a5a",
+    },
+  },
 };
 const theme = extendTheme({ fonts });
 

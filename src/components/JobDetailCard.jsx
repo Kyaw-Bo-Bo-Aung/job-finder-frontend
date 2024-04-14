@@ -11,7 +11,7 @@ import {
   Icon,
   Image,
 } from "@chakra-ui/react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   BiBookmark,
   BiCheck,
@@ -21,9 +21,15 @@ import {
 } from "react-icons/bi";
 import { JobContext } from "../context/JobProvider";
 import moment from "moment";
+import { badgeColors } from "../constant";
 
 const JobDetailCard = () => {
+  const [favourite, setFavourite] = useState(false);
   const { currentJob } = useContext(JobContext);
+
+  const handleFavourite = () => {
+    setFavourite(!favourite);
+  };
 
   if (!currentJob) {
     return (
@@ -102,7 +108,10 @@ const JobDetailCard = () => {
         <Box py="5">
           <HStack wrap="wrap">
             {currentJob.categories.map((category, index) => (
-              <Badge key={index} colorScheme="green">
+              <Badge
+                key={index}
+                colorScheme={badgeColors[index % badgeColors.length]}
+              >
                 {category.name}
               </Badge>
             ))}
@@ -113,10 +122,11 @@ const JobDetailCard = () => {
           <IconButton
             my="3"
             variant="ghost"
+            onClick={() => handleFavourite()}
             fontSize="23px"
             colorScheme="gray"
             aria-label="Save Job"
-            icon={true ? <BiBookmark /> : <BiSolidBookmark />}
+            icon={favourite ? <BiSolidBookmark /> : <BiBookmark />}
           />
         </Flex>
         <Divider my="5" />
@@ -130,12 +140,8 @@ const JobDetailCard = () => {
           <Box>
             <Flex gap="5">
               <Box>
-                Company: 
+                Company:
                 <Text fontSize="20">{currentJob.company.name}</Text>
-                {/* <Text fontSize="18">{}</Text>
-                <Text fontSize="14" color="gray.500">
-                  Software | medium company
-                </Text> */}
               </Box>
             </Flex>
           </Box>

@@ -7,12 +7,12 @@ import {
   Flex,
   Icon,
 } from "@chakra-ui/react";
-import FilterNav from "../components/FilterNav";
 import SearchBar from "../components/SearchBar";
-import JobVerticalList from "../components/JobVerticalList";
 import JobDetailCard from "../components/JobDetailCard";
 import { useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
+import JobList from "../components/JobList";
+import Filter from "../components/Filter";
 
 const Detail = () => {
   const [isDetailView, setIsDetailView] = useState(false);
@@ -30,7 +30,7 @@ const Detail = () => {
           </Box>
           <Divider />
           <Box m="5">
-            <FilterNav />
+            <Filter />
           </Box>
           <Grid
             templateColumns="repeat(7, 1fr)"
@@ -45,7 +45,7 @@ const Detail = () => {
               overflowY="auto"
               overflowX={{ base: "hidden" }}
             >
-              <JobVerticalList onChangeDetailView={() => toggleDetailView()} />
+              <JobList onChangeDetailView={() => toggleDetailView()} />
             </GridItem>
             <GridItem
               display={

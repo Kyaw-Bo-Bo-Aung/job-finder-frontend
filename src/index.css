@@ -1,6 +1,6 @@
 .card:hover {
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: hsl(0, 0%, 100%);
   border-color: #7ba1ff;
 }
 .card:hover .card-title {
@@ -8,6 +8,12 @@
 }
 
 .card.active {
-  border-left: 5px solid blue;
+  border-left: 5px solid #3182ce;
   background-color: #fff;
+  color: #000 !important;
+}
+
+.active {
+  background-color: #3182ce;
+  color: #ffffff !important;
 }

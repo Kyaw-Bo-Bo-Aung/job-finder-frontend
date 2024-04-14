@@ -21,12 +21,13 @@ import { FilterContext } from "../context/FilterProvider";
 import { BiCaretDown, BiCaretUp } from "react-icons/bi";
 import JobCardSkeleton from "./Skeleton/JobCardSkeleton";
 
-const JobVerticalList = ({ onChangeDetailView }) => {
+const apiUrl = process.env.REACT_APP_API_BASE_URL + "jobs"
+
+const JobList = ({ onChangeDetailView }) => {
+  const [currentPage, setCurrentPage] = useState(1);
   const { level, category, location, company, descending, handleDescending } =
     useContext(FilterContext);
-
-  const [currentPage, setCurrentPage] = useState(1);
-
+  
   useEffect(() => {
     setCurrentPage(1);
   }, [level, category, location, company]);
@@ -37,13 +38,20 @@ const JobVerticalList = ({ onChangeDetailView }) => {
       skipEmptyString: true,
     });
     return queryString.stringifyUrl({
-      url: "http://localhost:3001/api/v1/jobs",
+      url: apiUrl,
       query: queryString.parse(urlParams),
     });
   };
 
   const { data, loading, error, refetchData } = useFetchData(
-    generateURL({ page: currentPage - 1, category, location, level, company, descending })
+    generateURL({
+      page: currentPage - 1,
+      category,
+      location,
+      level,
+      company,
+      descending,
+    })
   );
 
   const handlePageChange = (page) => {
@@ -52,7 +60,7 @@ const JobVerticalList = ({ onChangeDetailView }) => {
 
   const handleSort = () => {
     handleDescending(!descending);
-  }
+  };
 
   if (loading) {
     return (
@@ -87,6 +95,7 @@ const JobVerticalList = ({ onChangeDetailView }) => {
               Something went wrong
             </Text>
             <Button
+              colorScheme="blue"
               onClick={() =>
                 refetchData(
                   generateURL({ page: currentPage, category, location, level })
@@ -109,7 +118,12 @@ const JobVerticalList = ({ onChangeDetailView }) => {
           <Flex>
             <Box fontSize={{ base: "sm", lg: "md" }}>{total} jobs</Box>
             <Spacer />
-            <Flex align="center" onClick={() => handleSort()} as="button" fontSize={{ base: "sm", lg: "md" }}>
+            <Flex
+              align="center"
+              onClick={() => handleSort()}
+              as="button"
+              fontSize={{ base: "sm", lg: "md" }}
+            >
               Sort{" "}
               {descending ? (
                 <Icon as={BiCaretDown} color="blue.800" boxSize={5} mr={1} />
@@ -149,4 +163,4 @@ const JobVerticalList = ({ onChangeDetailView }) => {
   );
 };
 
-export default JobVerticalList;
+export default JobList;

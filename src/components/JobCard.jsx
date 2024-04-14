@@ -15,10 +15,9 @@ import {
   BiTimeFive,
 } from "react-icons/bi";
 import moment from "moment";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { JobContext } from "../context/JobProvider";
-
-const badgeColors = ["red", "blue", "green", "purple", "yellow"];
+import { badgeColors } from "../constant";
 
 const JobCard = ({ jobDetail, onChangeDetailView }) => {
   const { currentJob, handleCurrentJob } = useContext(JobContext);
@@ -28,10 +27,6 @@ const JobCard = ({ jobDetail, onChangeDetailView }) => {
   const onDetail = (job) => {
     handleCurrentJob(job);
     onChangeDetailView();
-  };
-
-  const onSave = (e) => {
-    e.stopPropagation();
   };
 
   return (

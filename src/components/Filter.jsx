@@ -11,26 +11,18 @@ import {
   Badge,
   Box,
 } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { BiChevronDown } from "react-icons/bi";
 import { FilterContext } from "../context/FilterProvider";
+import { categories, experienceLevel } from "../constant";
 
-const FilterNav = () => {
+const Filter = () => {
   const {
     level,
     category,
     handleLevel,
     handleCategory,
   } = useContext(FilterContext);
-
-  const experienceLevel = [
-    "Entry Level",
-    "Mid Level",
-    "Senior Level",
-    "Internship",
-    "Management",
-  ];
-  const categoryList = ["IT", "Engineering"];
 
   const handleExpLevel = (lvl) => {
     if (level.includes(lvl))
@@ -95,7 +87,7 @@ const FilterNav = () => {
           </MenuButton>
           <MenuList minWidth="240px">
           <MenuOptionGroup type="checkbox" value={category}>
-              {categoryList.map((category) => (
+              {categories.map((category) => (
                 <MenuItemOption
                   isChecked={true}
                   onClick={() => handleJobCategory(category)}
@@ -116,4 +108,4 @@ const FilterNav = () => {
   );
 };
 
-export default FilterNav;
+export default Filter;
