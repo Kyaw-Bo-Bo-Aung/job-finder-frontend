@@ -40,7 +40,7 @@ docker run -d -p 3000:3000 --name your-frontend-container your-frontend-image
 - Allows users to view detailed information for each item.
 - Provides a responsive user interface for different screen sizes. 
 
-
+![Laptop View](./public/assets/images/laptop-mockup.png)
 
 ## Configuration
 
