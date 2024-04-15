@@ -41,6 +41,9 @@ docker run -d -p 3000:3000 --name your-frontend-container your-frontend-image
 - Provides a responsive user interface for different screen sizes. 
 
 ![Laptop View](./public/assets/images/laptop-mockup.png)
+![Mobile View](./public/assets/images/mobile-mockup-list.png)
+![Mobile View](./public/assets/images/mobile-mockup-mid.png)
+![Mobile View](./public/assets/images/mobile-mockup-detail.png)
 
 ## Configuration
 
