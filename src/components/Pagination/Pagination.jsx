@@ -42,11 +42,11 @@ const Pagination = ({ pagesCount, currentPage, onPageChange }) => {
 
   return (
     <ButtonGroup spacing="0">
-      <Button size={{base: 'sm', md: 'sm', lg: 'md'}} borderRadius="0px" onClick={() => handlePageChange(1)} disabled={currentPage === 1}>{"<"}</Button>
-      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>{"<<"}</Button>
+      <Button size={{base: 'sm', md: 'sm', lg: 'md'}} borderRadius="0px" onClick={() => handlePageChange(1)} disabled={currentPage === 1}>{"<<"}</Button>
+      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>{"<"}</Button>
       {renderPageButtons()}
-      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === pagesCount}>{">>"}</Button>
-      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(pagesCount)} disabled={currentPage === pagesCount}>{">"}</Button>
+      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === pagesCount}>{">"}</Button>
+      <Button size={{base: 'sm', md: 'sm', lg: 'md'}}  borderRadius="0px" onClick={() => handlePageChange(pagesCount)} disabled={currentPage === pagesCount}>{">>"}</Button>
     </ButtonGroup>
   );
 
